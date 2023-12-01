@@ -9,42 +9,28 @@ import Foundation
 
 class Calculator {
 
-    var firstNumber : Double = 0.0
-    var secondNumber : Double = 0.0
-    
-    // 덧셈
-    func addOperation(_ firstNumber: Double, _ secondNumber: Double) -> Double {
-        return firstNumber + secondNumber
-    }
-    
-    // 뺄셈
-    func subtractOperation(_ firstNumber: Double, _ secondNumber: Double) -> Double {
-        return firstNumber - secondNumber
-    }
-    
-    // 곱셈
-    func multiplyOperation(_ firstNumber: Double, _ secondNumber: Double) -> Double {
-        return firstNumber * secondNumber
-    }
-    
-    // 나눗셈
-    func divideOperation(_ firstNumber: Double, _ secondNumber: Double) -> Double {
-        if secondNumber != 0.0 {
-            return firstNumber / secondNumber
+    func calculate(_ operator: String, _ firstNumber: Int,_  secondNumber: Int) -> Double {
+        if `operator` == "+" {
+            return Double(firstNumber + secondNumber)
         }
-        else {
-            print("0으로 나눌 수 없습니다.")
-            return 0.0
+        if `operator` == "-" {
+            return Double(firstNumber - secondNumber)
         }
-         
-       
+        if `operator` == "*" {
+            return Double(firstNumber * secondNumber)
+        }
+        if `operator` == "/" {
+            return Double(firstNumber / secondNumber)
+        }
+        // 정확한 operator가 전달되지 않을 시 0을 리턴
+        return 0
     }
-     
 }
 
 func Main(){
     let calculator = Calculator()
     
+    /*
     print("첫번째 숫자를 입력해주세요")
     let firstValue = readLine()
     
@@ -53,12 +39,12 @@ func Main(){
 
     print("두번째 숫자를 입력해주세요")
     let secondValue = readLine()
-    
+    */
 
-    let addResult       = Calculator.addOperation()
-    let subtractResult  = Calculator.substractOperation() // 뺄셈 연산
-    let multiplyResult  = Calculator.multiplyOperation() // 곱셈 연산
-    let divideResult    = Calculator.divideOperation() // 나눗셈 연산
+    let addResult       = calculator.calculate("+", 3, 5)
+    let subtractResult  = calculator.calculate("-", 3, 6) // 뺄셈 연산
+    let multiplyResult  = calculator.calculate("*", 3, 7) // 곱셈 연산
+    let divideResult    = calculator.calculate("/", 8, 2) // 나눗셈 연산
 
     print("addResult : \(addResult)")
     print("subtractResult : \(subtractResult)")
@@ -66,9 +52,6 @@ func Main(){
     print("divideResult : \(divideResult)")
 
         
-
-        
-    
     
 }
 
